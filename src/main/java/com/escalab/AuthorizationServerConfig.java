@@ -58,10 +58,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		inMemory().
 		withClient(clientId).
 		secret(bcrypt.encode(clientSecret)).
-		authorizedGrantTypes(grantType).
+		authorizedGrantTypes(grantType, "refresh_token").
 		scopes(scopeRead, scopeWrite).
 		resourceIds(resourceIds).
-		accessTokenValiditySeconds(60)
+		accessTokenValiditySeconds(1000)
 		.refreshTokenValiditySeconds(0);
 	}
 	
