@@ -32,7 +32,7 @@ public class PersonaController {
 	public ResponseEntity<Persona> listarPorId(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
-			throw new ModeloNotFoundException("ID NO ENCONTRADO " + id);
+			throw new ModeloNotFoundException("Error " + id);
 		}
 		return new ResponseEntity<Persona>(persona, HttpStatus.OK);
 	}
@@ -41,7 +41,7 @@ public class PersonaController {
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
-			throw new ModeloNotFoundException("ID NO ENCONTRADO" + id);
+			throw new ModeloNotFoundException("Error " + id);
 		}
 		iPersonaService.eliminar(id);
 		return new ResponseEntity<Object>(HttpStatus.OK);
@@ -50,7 +50,6 @@ public class PersonaController {
 	@PostMapping
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.registrar(persona);
-		//pacientes/4
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(persona.getIdPersona()).toUri();
 		return ResponseEntity.created(location).build();
 	}
