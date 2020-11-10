@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class PersonaController {
 
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Persona> listarPorId(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
@@ -39,6 +41,7 @@ public class PersonaController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
@@ -49,14 +52,16 @@ public class PersonaController {
 	}
 	
 	@PostMapping
-	//@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.registrar(persona);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(per.getIdPersona()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 	
+	
 	@PutMapping
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Persona> modificar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.modificar(persona);
 		return new ResponseEntity<Persona>(per, HttpStatus.OK);

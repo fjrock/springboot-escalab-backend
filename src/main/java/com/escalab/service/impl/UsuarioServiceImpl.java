@@ -32,9 +32,9 @@ public class UsuarioServiceImpl implements UserDetailsService {
 		
 		List<GrantedAuthority> roles = new ArrayList<>();
 		
-		/*usuario.getRoles().forEach(rol -> {
+		usuario.getRoles().forEach(rol -> {
 			roles.add(new SimpleGrantedAuthority(rol.getNombre()));
-		});*/
+		});
 		
 		UserDetails ud = new User(usuario.getUsername(), usuario.getPassword(), roles);
 		return ud;
