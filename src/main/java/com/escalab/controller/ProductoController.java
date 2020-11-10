@@ -18,48 +18,47 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escalab.exception.ModeloNotFoundException;
-import com.escalab.model.Persona;
-import com.escalab.service.IPersonaService;
+import com.escalab.model.Producto;
+import com.escalab.service.IProductoService;
 
 @RestController
-@RequestMapping("/persona")
-public class PersonaController {
+@RequestMapping("/producto")
+public class ProductoController {
 	
 	@Autowired
-	private IPersonaService iPersonaService;
-
+	private IProductoService iProductoService;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Persona> listarPorId(@PathVariable("id") Integer id) {
-		Persona persona = iPersonaService.leerPorId(id);
-		if (persona.getIdPersona() == null) {
+	public ResponseEntity<Producto> listarPorId(@PathVariable("id") Integer id) {
+		Producto producto = iProductoService.leerPorId(id);
+		if (producto.getIdProducto() == null) {
 			throw new ModeloNotFoundException("Error " + id);
 		}
-		return new ResponseEntity<Persona>(persona, HttpStatus.OK);
+		return new ResponseEntity<Producto>(producto, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
-		Persona persona = iPersonaService.leerPorId(id);
-		if (persona.getIdPersona() == null) {
+		Producto producto = iProductoService.leerPorId(id);
+		if (producto.getIdProducto() == null) {
 			throw new ModeloNotFoundException("Error " + id);
 		}
-		iPersonaService.eliminar(id);
+		iProductoService.eliminar(id);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
 	@PostMapping
 	//@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
-	public ResponseEntity<Object> registrar(@Valid @RequestBody Persona persona) {
-		Persona per = iPersonaService.registrar(persona);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(per.getIdPersona()).toUri();
+	public ResponseEntity<Object> registrar(@Valid @RequestBody Producto producto) {
+		Producto pro = iProductoService.registrar(producto);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(pro.getIdProducto()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 	
 	@PutMapping
-	public ResponseEntity<Persona> modificar(@Valid @RequestBody Persona persona) {
-		Persona per = iPersonaService.modificar(persona);
-		return new ResponseEntity<Persona>(per, HttpStatus.OK);
+	public ResponseEntity<Producto> modificar(@Valid @RequestBody Producto producto) {
+		Producto Pro = iProductoService.modificar(producto);
+		return new ResponseEntity<Producto>(Pro, HttpStatus.OK);
 	}
-	
+
 }

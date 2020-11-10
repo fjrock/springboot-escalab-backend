@@ -18,48 +18,49 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escalab.exception.ModeloNotFoundException;
-import com.escalab.model.Persona;
-import com.escalab.service.IPersonaService;
+import com.escalab.model.Categoria;
+import com.escalab.service.ICategoriaService;
+
 
 @RestController
-@RequestMapping("/persona")
-public class PersonaController {
+@RequestMapping("/categoria")
+public class CategoriaController {
 	
 	@Autowired
-	private IPersonaService iPersonaService;
-
+	private ICategoriaService iCategoriaService;
+	
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Persona> listarPorId(@PathVariable("id") Integer id) {
-		Persona persona = iPersonaService.leerPorId(id);
-		if (persona.getIdPersona() == null) {
+	public ResponseEntity<Categoria> listarPorId(@PathVariable("id") Integer id) {
+		Categoria categoria = iCategoriaService.leerPorId(id);
+		if (categoria.getIdCategoria() == null) {
 			throw new ModeloNotFoundException("Error " + id);
 		}
-		return new ResponseEntity<Persona>(persona, HttpStatus.OK);
+		return new ResponseEntity<Categoria>(categoria, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
-		Persona persona = iPersonaService.leerPorId(id);
-		if (persona.getIdPersona() == null) {
+		Categoria categoria = iCategoriaService.leerPorId(id);
+		if (categoria.getIdCategoria() == null) {
 			throw new ModeloNotFoundException("Error " + id);
 		}
-		iPersonaService.eliminar(id);
+		iCategoriaService.eliminar(id);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
 	
 	@PostMapping
 	//@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
-	public ResponseEntity<Object> registrar(@Valid @RequestBody Persona persona) {
-		Persona per = iPersonaService.registrar(persona);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(per.getIdPersona()).toUri();
+	public ResponseEntity<Object> registrar(@Valid @RequestBody Categoria categoria) {
+		Categoria cat = iCategoriaService.registrar(categoria);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cat.getIdCategoria()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 	
 	@PutMapping
-	public ResponseEntity<Persona> modificar(@Valid @RequestBody Persona persona) {
-		Persona per = iPersonaService.modificar(persona);
-		return new ResponseEntity<Persona>(per, HttpStatus.OK);
+	public ResponseEntity<Categoria> modificar(@Valid @RequestBody Categoria categoria) {
+		Categoria cat = iCategoriaService.modificar(categoria);
+		return new ResponseEntity<Categoria>(cat, HttpStatus.OK);
 	}
-	
+
 }
