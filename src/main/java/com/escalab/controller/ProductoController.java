@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ public class ProductoController {
 	private IProductoService iProductoService;
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Producto> listarPorId(@PathVariable("id") Integer id) {
 		Producto producto = iProductoService.leerPorId(id);
 		if (producto.getIdProducto() == null) {
@@ -38,6 +40,7 @@ public class ProductoController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
 		Producto producto = iProductoService.leerPorId(id);
 		if (producto.getIdProducto() == null) {
@@ -48,7 +51,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping
-	//@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Producto producto) {
 		Producto pro = iProductoService.registrar(producto);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(pro.getIdProducto()).toUri();
@@ -56,6 +59,7 @@ public class ProductoController {
 	}
 	
 	@PutMapping
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Producto> modificar(@Valid @RequestBody Producto producto) {
 		Producto Pro = iProductoService.modificar(producto);
 		return new ResponseEntity<Producto>(Pro, HttpStatus.OK);
