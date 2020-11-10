@@ -28,8 +28,6 @@ public class Consulta {
 	@ManyToOne
 	@JoinColumn(name = "id_producto", nullable = false, foreignKey = @ForeignKey(name = "FK_consulta_producto"))
 	private Producto producto;
-	
-	//falta detalle
 
 	public Integer getIdConsulta() {
 		return idConsulta;
