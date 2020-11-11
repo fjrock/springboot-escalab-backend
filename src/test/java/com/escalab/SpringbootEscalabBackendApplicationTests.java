@@ -27,9 +27,9 @@ public class SpringbootEscalabBackendApplicationTests {
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setIdUsuario(2);
-		us.setUsername("2");
-		us.setPassword(bcrypt.encode("2"));
+		us.setIdUsuario(1);
+		us.setUsername("francisco");
+		us.setPassword(bcrypt.encode("1"));
 		us.setEnabled(true);
 		
 		Usuario retorno = repo.save(us);

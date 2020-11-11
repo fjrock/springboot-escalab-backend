@@ -9,6 +9,11 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class ConsultaProductoPK implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@ManyToOne
 	@JoinColumn(name = "id_producto", nullable = false)
 	private Producto producto;

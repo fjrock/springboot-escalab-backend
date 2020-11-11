@@ -23,13 +23,13 @@ public class Producto {
 	@Column(name = "stock", nullable = false)
 	private Integer stock;
 	
-	@Column(name = "fecha_creacion", nullable = false)
+	@Column(name = "fecha_creacion")
 	private LocalDateTime fechaCreacion;
 	
-	@Column(name = "fecha_actualizacion", nullable = false)
+	@Column(name = "fecha_actualizacion")
 	private LocalDateTime fechaActualizacion;
 	
-	@Column(name = "tipo_intercambio", nullable = false)
+	@Column(name = "tipo_intercambio")
 	private String tipoIntercambio;
 
 	public Integer getIdProducto() {

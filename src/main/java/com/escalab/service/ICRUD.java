@@ -1,6 +1,5 @@
 package com.escalab.service;
 
-import java.util.List;
 
 public interface ICRUD<T> {
 	

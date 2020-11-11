@@ -52,7 +52,7 @@ public class PersonaController {
 	}
 	
 	@PostMapping
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.registrar(persona);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(per.getIdPersona()).toUri();

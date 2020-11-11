@@ -51,7 +51,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Producto producto) {
 		Producto pro = iProductoService.registrar(producto);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(pro.getIdProducto()).toUri();
