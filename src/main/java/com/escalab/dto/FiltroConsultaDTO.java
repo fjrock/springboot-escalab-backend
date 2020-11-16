@@ -11,6 +11,7 @@ public class FiltroConsultaDTO {
 	
 	
 	
+	
 	public Integer getIdConsulta() {
 		return idConsulta;
 	}

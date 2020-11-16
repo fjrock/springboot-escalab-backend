@@ -7,7 +7,7 @@ import com.escalab.model.ConsultaProducto;
 
 public interface IConsultaProductoService {
 
-	List<ConsultaProducto> listarProductoPorConsulta(Integer idProducto);
+	List<ConsultaProducto> listarProductoPorId(Integer idProducto);
 	
 	Integer registrarConsultaProducto (FiltroConsultaDTO filtro);
 }

@@ -31,7 +31,7 @@ public class PersonaController {
 
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Persona> listarPorId(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
@@ -41,7 +41,7 @@ public class PersonaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
@@ -61,7 +61,7 @@ public class PersonaController {
 	
 	
 	@PutMapping
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Persona> modificar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.modificar(persona);
 		return new ResponseEntity<Persona>(per, HttpStatus.OK);

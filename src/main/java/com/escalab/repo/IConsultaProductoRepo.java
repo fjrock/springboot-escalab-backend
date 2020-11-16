@@ -14,8 +14,8 @@ import com.escalab.model.ConsultaProducto;
 
 public interface IConsultaProductoRepo extends JpaRepository<ConsultaProducto, Integer>{
 	
-	@Query("from ConsultaProducto cp where cp.consulta.idConsulta = :idConsulta")
-	List<ConsultaProducto> listarProductoPorId(@Param("idConsulta") Integer idConsulta);
+	@Query("from ConsultaProducto cp where cp.producto.idProducto = :idProducto")
+	List<ConsultaProducto> listarProductoPorId(@Param("idProducto") Integer idProducto);
 	
 	@Transactional
 	@Modifying

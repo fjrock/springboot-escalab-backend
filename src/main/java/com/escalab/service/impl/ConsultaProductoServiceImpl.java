@@ -17,8 +17,8 @@ public class ConsultaProductoServiceImpl implements IConsultaProductoService {
 	private IConsultaProductoRepo iConsultaProductoRepo;
 	
 	@Override
-	public List<ConsultaProducto> listarProductoPorConsulta(Integer idConsulta) {
-		return iConsultaProductoRepo.listarProductoPorId(idConsulta);
+	public List<ConsultaProducto> listarProductoPorId(Integer idProducto) {
+		return iConsultaProductoRepo.listarProductoPorId(idProducto);
 	}
 
 	@Override

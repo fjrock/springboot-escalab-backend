@@ -31,6 +31,11 @@ public class Producto {
 	
 	@Column(name = "tipo_intercambio")
 	private String tipoIntercambio;
+	
+	@Column(name = "lugar_entrega",length = 50)
+	private String lugarEntrega;
+	
+	
 
 	public Integer getIdProducto() {
 		return idProducto;
@@ -79,6 +84,16 @@ public class Producto {
 	public void setTipoIntercambio(String tipoIntercambio) {
 		this.tipoIntercambio = tipoIntercambio;
 	}
+
+	public String getLugarEntrega() {
+		return lugarEntrega;
+	}
+
+	public void setLugarEntrega(String lugarEntrega) {
+		this.lugarEntrega = lugarEntrega;
+	}
+	
+	
 	
 	
 
