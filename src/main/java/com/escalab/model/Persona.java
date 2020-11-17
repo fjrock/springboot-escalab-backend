@@ -55,7 +55,7 @@ public class Persona {
 	private String email;
 
 	@ApiModelProperty(notes = "define si usuario puede o no ofrecer productos")
-	@Column(name = "banned", nullable = false, columnDefinition="boolean default true")
+	@Column(name = "banned", nullable = false, columnDefinition="boolean default false")
 	private boolean banned;
 	
 	
