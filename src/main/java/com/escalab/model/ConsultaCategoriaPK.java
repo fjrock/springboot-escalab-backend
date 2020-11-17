@@ -6,6 +6,9 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "PK relacion categoria con consulta")
 @Embeddable
 public class ConsultaCategoriaPK implements Serializable{
 	

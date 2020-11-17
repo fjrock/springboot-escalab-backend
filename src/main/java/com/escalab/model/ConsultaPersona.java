@@ -5,6 +5,9 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "Información relacionada a consulta con persona")
 @Entity
 @Table(name = "consulta_persona")
 @IdClass(ConsultaPersonaPK.class)

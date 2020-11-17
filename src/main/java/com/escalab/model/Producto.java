@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Información de productos disponibles para ofrecer por un tipo de persona")
 @Entity
 @Table(name = "producto")
 public class Producto {
@@ -17,21 +21,27 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idProducto;
 	
+	@ApiModelProperty(notes = "Nombre de producto debe tener maximo 50 caracteres")
 	@Column(name = "nombre", nullable = false, length = 50)
 	private String nombre;
 	
+	@ApiModelProperty(notes = "stock de categoria desde 0 hasta n")
 	@Column(name = "stock", nullable = false)
 	private Integer stock;
 	
+	@ApiModelProperty(notes = "fecha de creacion producto a ofrecer")
 	@Column(name = "fecha_creacion")
 	private LocalDateTime fechaCreacion;
 	
+	@ApiModelProperty(notes = "fecha de actualizacion de producto a ofrecer")
 	@Column(name = "fecha_actualizacion")
 	private LocalDateTime fechaActualizacion;
 	
+	@ApiModelProperty(notes = "tipo de intercambio de producto a ofrecer (trueque-venta-donacion-otros)")
 	@Column(name = "tipo_intercambio")
 	private String tipoIntercambio;
 	
+	@ApiModelProperty(notes = "lugar de entrega de producto a ofrecer (metro-comisaria-cualquier lugar seguro para los usuarios). Debe tener maximo 50 caracteres")
 	@Column(name = "lugar_entrega",length = 50)
 	private String lugarEntrega;
 	

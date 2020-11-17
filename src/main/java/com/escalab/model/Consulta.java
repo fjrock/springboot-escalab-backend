@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "Información relacionada a consulta con persona-categoria-producto")
 @Entity
 @Table(name = "consulta")
 public class Consulta {

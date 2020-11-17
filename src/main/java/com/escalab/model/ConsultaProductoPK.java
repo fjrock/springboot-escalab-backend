@@ -6,12 +6,12 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "PK relacion producto con consulta")
 @Embeddable
 public class ConsultaProductoPK implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
