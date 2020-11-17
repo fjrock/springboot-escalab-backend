@@ -16,9 +16,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 	
-	public static final Contact DEFAULT_CONTACT = new Contact("Escalab", "https://www.laescala.cl",
+	public static final Contact DEFAULT_CONTACT = new Contact("FJROCK", "https://www.fjrock.cl",
 			"fjœlive.cl");
-	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Ofrecelo Api Documentation", "ofrecelo Api Documentation", "1.0",
+	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Ofrecelo API Documentation", "ofrecelo API Documentation", "1.0",
 			"PREMIUM", DEFAULT_CONTACT, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0",
 			new ArrayList<VendorExtension>());
 	
