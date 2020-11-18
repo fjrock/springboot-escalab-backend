@@ -11,5 +11,7 @@ public interface IConsultaService {
 	
 	List<Consulta> buscarTodoPorCategoria(FiltroConsultaDTO filtro);
 	
+	List<Consulta> buscarTodoPorProducto(FiltroConsultaDTO filtro);
+	
 	Integer registrarConsulta (FiltroConsultaDTO filtro);
 }

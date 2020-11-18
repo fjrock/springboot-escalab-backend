@@ -30,6 +30,11 @@ public class ConsultaServiceImpl implements IConsultaService{
 	}
 
 	@Override
+	public List<Consulta> buscarTodoPorProducto(FiltroConsultaDTO filtro) {
+		return iConsultaRepo.buscarTodoPorProducto(filtro.getNombre());
+	}
+	
+	@Override
 	public Integer registrarConsulta(FiltroConsultaDTO filtro) {
 		return iConsultaRepo.registrarConsulta(filtro.getIdCategoria(), filtro.getIdPersona(), filtro.getIdProducto());
 	}

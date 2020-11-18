@@ -59,7 +59,7 @@ public class ProductoController {
 	}
 	
 	@PutMapping
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	public ResponseEntity<Producto> modificar(@Valid @RequestBody Producto producto) {
 		Producto Pro = iProductoService.modificar(producto);
 		return new ResponseEntity<Producto>(Pro, HttpStatus.OK);

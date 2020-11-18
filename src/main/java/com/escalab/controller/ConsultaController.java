@@ -28,9 +28,9 @@ public class ConsultaController {
 	private IConsultaService IConsultaService;
 	
 	
-	@PostMapping("/buscarporrun")
+	@PostMapping("/buscartodoporrun")
 	//@PreAuthorize("hasAuthority('USER')")
-	public ResponseEntity<List<Consulta>> buscarPorRun(@RequestBody FiltroConsultaDTO filtro) {
+	public ResponseEntity<List<Consulta>> buscarTodoPorRun(@RequestBody FiltroConsultaDTO filtro) {
 		List<Consulta> consultas = new ArrayList<>();
 
 		if (filtro != null) {
@@ -41,14 +41,27 @@ public class ConsultaController {
 		return new ResponseEntity<List<Consulta>>(consultas, HttpStatus.OK);
 	}
 	
-	@PostMapping("/buscarporcategoria")
+	@PostMapping("/buscartodoporcategoria")
 	//@PreAuthorize("hasAuthority('USER')")
-	public ResponseEntity<List<Consulta>> buscarPorCategoria(@RequestBody FiltroConsultaDTO filtro) {
+	public ResponseEntity<List<Consulta>> buscarTodoPorCategoria(@RequestBody FiltroConsultaDTO filtro) {
 		List<Consulta> consultas = new ArrayList<>();
 
 		if (filtro != null) {
 			
 				consultas = IConsultaService.buscarTodoPorCategoria(filtro);
+			
+		}
+		return new ResponseEntity<List<Consulta>>(consultas, HttpStatus.OK);
+	}
+	
+	@PostMapping("/buscartodoporproducto")
+	//@PreAuthorize("hasAuthority('USER')")
+	public ResponseEntity<List<Consulta>> buscarTodoPorProducto(@RequestBody FiltroConsultaDTO filtro) {
+		List<Consulta> consultas = new ArrayList<>();
+
+		if (filtro != null) {
+			
+				consultas = IConsultaService.buscarTodoPorProducto(filtro);
 			
 		}
 		return new ResponseEntity<List<Consulta>>(consultas, HttpStatus.OK);

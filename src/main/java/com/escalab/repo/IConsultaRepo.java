@@ -17,6 +17,9 @@ public interface IConsultaRepo extends JpaRepository<Consulta, Integer>{
 	
 	@Query("from Consulta c where  LOWER(c.categoria.nombre) =:nombre")
 	List<Consulta> buscarTodoPorCategoria(@Param("nombre")String nombre);
+
+	@Query("from Consulta c where  LOWER(c.producto.nombre) =:nombre")
+	List<Consulta> buscarTodoPorProducto(@Param("nombre")String nombre);
 	
 	@Transactional
 	@Modifying
