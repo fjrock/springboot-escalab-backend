@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class CategoriaController {
 	
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Categoria> listarPorId(@PathVariable("id") Integer id) {
 		Categoria categoria = iCategoriaService.leerPorId(id);
 		if (categoria.getIdCategoria() == null) {
@@ -40,6 +42,7 @@ public class CategoriaController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
 		Categoria categoria = iCategoriaService.leerPorId(id);
 		if (categoria.getIdCategoria() == null) {
@@ -50,7 +53,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping
-	//@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Categoria categoria) {
 		Categoria cat = iCategoriaService.registrar(categoria);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cat.getIdCategoria()).toUri();
@@ -58,6 +61,7 @@ public class CategoriaController {
 	}
 	
 	@PutMapping
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Categoria> modificar(@Valid @RequestBody Categoria categoria) {
 		Categoria cat = iCategoriaService.modificar(categoria);
 		return new ResponseEntity<Categoria>(cat, HttpStatus.OK);

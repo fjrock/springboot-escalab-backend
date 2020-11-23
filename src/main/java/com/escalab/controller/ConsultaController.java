@@ -1,6 +1,5 @@
 package com.escalab.controller;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escalab.dto.FiltroConsultaDTO;
 import com.escalab.model.Consulta;
@@ -29,7 +27,7 @@ public class ConsultaController {
 	
 	
 	@PostMapping("/buscartodoporrun")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<List<Consulta>> buscarTodoPorRun(@RequestBody FiltroConsultaDTO filtro) {
 		List<Consulta> consultas = new ArrayList<>();
 
@@ -42,7 +40,7 @@ public class ConsultaController {
 	}
 	
 	@PostMapping("/buscartodoporcategoria")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<List<Consulta>> buscarTodoPorCategoria(@RequestBody FiltroConsultaDTO filtro) {
 		List<Consulta> consultas = new ArrayList<>();
 
@@ -55,7 +53,7 @@ public class ConsultaController {
 	}
 	
 	@PostMapping("/buscartodoporproducto")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<List<Consulta>> buscarTodoPorProducto(@RequestBody FiltroConsultaDTO filtro) {
 		List<Consulta> consultas = new ArrayList<>();
 
@@ -68,7 +66,7 @@ public class ConsultaController {
 	}
 	
 	@PostMapping("/registrarconsulta")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> registrarConsulta(@Valid @RequestBody FiltroConsultaDTO filtro) {
 		Integer integer = IConsultaService.registrarConsulta(filtro);
 		return new ResponseEntity<Object>(integer, HttpStatus.OK);

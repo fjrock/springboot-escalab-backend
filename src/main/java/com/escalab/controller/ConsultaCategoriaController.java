@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,7 @@ public class ConsultaCategoriaController {
 	
 	
 	@GetMapping(value = "/{idCategoria}")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<List<ConsultaCategoria>> listar(@PathVariable("idCategoria") Integer idCategoria) {
 		List<ConsultaCategoria> consultacategoria = new ArrayList<>();
 		consultacategoria = iConsultaCategoriaService.listarCategoriaPorId(idCategoria);
@@ -37,7 +38,7 @@ public class ConsultaCategoriaController {
 	}
 
 	@PostMapping("/registrar")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> registrarConsultaCategoria(@Valid @RequestBody FiltroConsultaDTO filtro) {
 		Integer integer = iConsultaCategoriaService.registrarConsultaCategoria(filtro);
 		return new ResponseEntity<Object>(integer, HttpStatus.OK);

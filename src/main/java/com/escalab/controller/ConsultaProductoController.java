@@ -29,7 +29,7 @@ public class ConsultaProductoController {
 	private IConsultaProductoService iConsultaProductoService;
 	
 	@GetMapping(value = "/{idProducto}")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<List<ConsultaProducto>> listar(@PathVariable("idProducto") Integer idProducto) {
 		List<ConsultaProducto> consultaproducto = new ArrayList<>();
 		consultaproducto = iConsultaProductoService.listarProductoPorId(idProducto);
@@ -37,7 +37,7 @@ public class ConsultaProductoController {
 	}
 
 	@PostMapping("/registrar")
-	//@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> registrarConsultaProducto(@Valid @RequestBody FiltroConsultaDTO filtro) {
 		Integer integer = iConsultaProductoService.registrarConsultaProducto(filtro);
 		return new ResponseEntity<Object>(integer, HttpStatus.OK);

@@ -31,7 +31,7 @@ public class PersonaController {
 
 	
 	@GetMapping("/{id}")
-	//@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Persona> listarPorId(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
@@ -41,7 +41,7 @@ public class PersonaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	//@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id) {
 		Persona persona = iPersonaService.leerPorId(id);
 		if (persona.getIdPersona() == null) {
@@ -52,7 +52,7 @@ public class PersonaController {
 	}
 	
 	@PostMapping
-	//@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Object> registrar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.registrar(persona);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(per.getIdPersona()).toUri();
@@ -61,7 +61,7 @@ public class PersonaController {
 	
 	
 	@PutMapping
-	//@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER')")
 	public ResponseEntity<Persona> modificar(@Valid @RequestBody Persona persona) {
 		Persona per = iPersonaService.modificar(persona);
 		return new ResponseEntity<Persona>(per, HttpStatus.OK);
