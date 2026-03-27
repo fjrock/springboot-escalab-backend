@@ -38,3 +38,4 @@ public class ExceptionResponse {
 		this.detalles = detalles;
 	}
 }
+

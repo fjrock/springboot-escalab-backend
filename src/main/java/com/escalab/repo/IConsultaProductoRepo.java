@@ -24,3 +24,4 @@ public interface IConsultaProductoRepo extends JpaRepository<ConsultaProducto, I
 
 
 }
+

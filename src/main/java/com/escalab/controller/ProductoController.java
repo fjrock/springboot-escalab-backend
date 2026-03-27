@@ -2,7 +2,7 @@ package com.escalab.controller;
 
 import java.net.URI;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,3 +66,4 @@ public class ProductoController {
 	}
 
 }
+

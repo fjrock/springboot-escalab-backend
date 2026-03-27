@@ -10,3 +10,4 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Integer> {
 	@Query(value = "select * from usuario where nombre = :username", nativeQuery = true)
 	Usuario findOneByUsername(String username);
 }
+

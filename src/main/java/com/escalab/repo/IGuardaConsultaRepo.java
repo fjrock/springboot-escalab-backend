@@ -14,3 +14,4 @@ public interface IGuardaConsultaRepo extends JpaRepository<Consulta, Integer>{
 	Integer registrar(@Param("idConsulta") Integer idConsulta, @Param("idCategoria") Integer idCategoria, @Param("idPersona") Integer idPersona,@Param("idProducto") Integer idProducto);
 
 }
+

@@ -7,3 +7,4 @@ import com.escalab.model.Producto;
 public interface IProductoRepo extends JpaRepository<Producto, Integer>{
 
 }
+

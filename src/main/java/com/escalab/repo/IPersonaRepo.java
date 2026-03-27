@@ -9,3 +9,4 @@ public interface IPersonaRepo extends JpaRepository<Persona, Integer>{
 	
 	//CREAR METODO BORRAR TODO PARA DBA
 }
+

@@ -8,3 +8,4 @@ import com.escalab.model.Categoria;
 public interface ICategoriaRepo extends JpaRepository<Categoria, Integer> {
 
 }
+

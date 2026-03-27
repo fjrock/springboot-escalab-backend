@@ -1,25 +1,22 @@
 package com.escalab;
 
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.escalab.model.Usuario;
 import com.escalab.repo.IUsuarioRepo;
 
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootEscalabBackendApplicationTests {
 
 	@Autowired
-	private BCryptPasswordEncoder bcrypt;
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private IUsuarioRepo repo;
@@ -29,7 +26,7 @@ public class SpringbootEscalabBackendApplicationTests {
 		Usuario us = new Usuario();
 		us.setIdUsuario(1);
 		us.setUsername("francisco");
-		us.setPassword(bcrypt.encode("1"));
+		us.setPassword(passwordEncoder.encode("1"));
 		us.setEnabled(true);
 		
 		Usuario retorno = repo.save(us);

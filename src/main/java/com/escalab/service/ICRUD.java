@@ -10,3 +10,4 @@ public interface ICRUD<T> {
 	boolean eliminar(Integer id);
 
 }
+

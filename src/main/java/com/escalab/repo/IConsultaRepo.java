@@ -28,3 +28,4 @@ public interface IConsultaRepo extends JpaRepository<Consulta, Integer>{
 
 
 }
+

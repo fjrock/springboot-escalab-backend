@@ -15,3 +15,4 @@ public interface IConsultaService {
 	
 	Integer registrarConsulta (FiltroConsultaDTO filtro);
 }
+

@@ -30,3 +30,4 @@ public class ResetTokenServiceImpl implements IResetTokenService {
 	}
 
 }
+

@@ -23,3 +23,4 @@ public interface IConsultaCategoriaRepo extends JpaRepository<ConsultaCategoria,
 	Integer registrarConsultaCategoria(@Param("idConsulta") Integer idConsulta,@Param("idCategoria") Integer idCategoria);
 
 }
+

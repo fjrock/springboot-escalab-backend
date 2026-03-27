@@ -1,18 +1,15 @@
 package com.escalab.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "Información de la persona (natural - juridica) que puede ofrecer productos")
 @Entity
 @Table(name = "persona")
 public class Persona {
@@ -21,40 +18,31 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPersona;
 
-	@ApiModelProperty(notes = "Nombre debe tener maximo 100 caracteres")
 	@Column(name = "nombre", nullable = false, length = 100)
 	private String nombre;
 	
-	@ApiModelProperty(notes = "Apellido Paterno debe tener maximo 100 caracteres")
 	@Column(name = "apellido_paterno", nullable = false, length = 100)
 	private String apellidoPaterno;
 	
-	@ApiModelProperty(notes = "Apellido Materno debe tener maximo 100 caracteres")
 	@Column(name = "apellido_materno", nullable = false, length = 100)
 	private String apellidoMaterno;
 	
-	@ApiModelProperty(notes = "Run  debe tener maximo 8 caracteres")
 	@Column(name = "run", nullable = false, length = 8)
 	private String run;
 	
-	@ApiModelProperty(notes = "Digito verificador Paterno debe tener maximo 1 caracter")
 	@Column(name = "dv", nullable = false, length = 1)
 	private String dv;
 	
-	@ApiModelProperty(notes = "Telefono debe tener maximo 12 caracteres")
 	@Column(name = "telefono", nullable = false, length = 12)
 	private String telefono;
 	
-	@ApiModelProperty(notes = "Tipo persona (natural - juridica) debe tener maximo 100 caracteres")
 	@Column(name = "tipo_persona", nullable = false, length = 100)
 	private String tipoPersona;
 	
-	@ApiModelProperty(notes = "Email")
 	@Email
 	@Column(name = "email", nullable = false, length = 100)
 	private String email;
 
-	@ApiModelProperty(notes = "define si usuario puede o no ofrecer productos")
 	@Column(name = "banned", nullable = false, columnDefinition="boolean default false")
 	private boolean banned;
 	
@@ -134,3 +122,4 @@ public class Persona {
 	
 
 }
+

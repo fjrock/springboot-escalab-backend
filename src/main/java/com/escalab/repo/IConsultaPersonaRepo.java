@@ -22,3 +22,4 @@ public interface IConsultaPersonaRepo  extends JpaRepository<ConsultaPersona, In
 	Integer registrarConsultaPersona(@Param("idConsulta") Integer idConsulta,@Param("idPersona") Integer idProducto);
 
 }
+

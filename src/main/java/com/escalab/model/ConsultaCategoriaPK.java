@@ -2,13 +2,11 @@ package com.escalab.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
-import io.swagger.annotations.ApiModel;
 
-@ApiModel(description = "PK relacion categoria con consulta")
 @Embeddable
 public class ConsultaCategoriaPK implements Serializable{
 	
@@ -56,3 +54,4 @@ public class ConsultaCategoriaPK implements Serializable{
 	
 
 }
+

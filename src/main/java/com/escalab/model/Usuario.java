@@ -2,19 +2,16 @@ package com.escalab.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "Informacion de usuarios")
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -22,15 +19,12 @@ public class Usuario {
 	@Id
 	private Integer idUsuario;
 	
-	@ApiModelProperty(notes = "Nombre de usuario")
 	@Column(name = "nombre", nullable = false, unique = true)
 	private String username;
 	
-	@ApiModelProperty(notes = "Clave de usuario")
 	@Column(name = "clave", nullable = false)
 	private String password;
 	
-	@ApiModelProperty(notes = "Estado de usuario")
 	@Column(name = "estado", nullable = false)
 	private boolean enabled;
 	
@@ -79,3 +73,4 @@ public class Usuario {
 	}
 	
 }
+

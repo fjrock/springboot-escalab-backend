@@ -11,3 +11,4 @@ public interface IConsultaProductoService {
 	
 	Integer registrarConsultaProducto (FiltroConsultaDTO filtro);
 }
+
