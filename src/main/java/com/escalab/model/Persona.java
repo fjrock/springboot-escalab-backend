@@ -118,8 +118,14 @@ public class Persona {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	public boolean isBanned() {
+		return banned;
+	}
+
+	public void setBanned(boolean banned) {
+		this.banned = banned;
+	}
 
 }
 
